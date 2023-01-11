@@ -1,41 +1,39 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-const TableProduct = ({ data }) => {
-  if (data.length === 0) {
-    return <div> LOADING DATA.. PLEASE WAIT</div>;
-  } else {
-    return (
-      <table class="min-w-full">
-        <thead class="border border-slate-500">
+const TableProduct = ({ data, updateData }) => {
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full ">
+        <thead className="border border-slate-500">
           <tr>
             <th
               scope="col"
-              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
             >
               Name
             </th>
             <th
               scope="col"
-              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
             >
               Category
             </th>
             <th
               scope="col"
-              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
             >
               Description
             </th>
             <th
               scope="col"
-              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
             >
               Created At
             </th>
             <th
               scope="col"
-              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
             >
               Status
             </th>
@@ -44,12 +42,17 @@ const TableProduct = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <TableRow key={item.id} rowData={item} />
+            <TableRow
+              key={item.id}
+              rowData={item}
+              data={data}
+              updateData={updateData}
+            />
           ))}
         </tbody>
       </table>
-    );
-  }
+    </div>
+  );
 };
 
 export default TableProduct;
