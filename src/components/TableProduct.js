@@ -6,14 +6,40 @@ const TableProduct = ({ data }) => {
     return <div> LOADING DATA.. PLEASE WAIT</div>;
   } else {
     return (
-      <table class="border border-slate-500">
+      <table class="min-w-full">
         <thead class="border border-slate-500">
           <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Created At</th>
-            <th>Status</th>
+            <th
+              scope="col"
+              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+            >
+              Name
+            </th>
+            <th
+              scope="col"
+              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+            >
+              Category
+            </th>
+            <th
+              scope="col"
+              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+            >
+              Description
+            </th>
+            <th
+              scope="col"
+              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+            >
+              Created At
+            </th>
+            <th
+              scope="col"
+              class="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+            >
+              Status
+            </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

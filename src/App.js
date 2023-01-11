@@ -18,8 +18,8 @@ const App = () => {
   console.log(data);
 
   return (
-    <div className="items-center">
-      <h2> Task 2 : CRUD Operation </h2>
+    <div className="container mx-auto font-rubik">
+      <div class="text-2xl"> Task 2 : CRUD Operation </div>
       <div></div>
 
       <TableProduct data={data} />
