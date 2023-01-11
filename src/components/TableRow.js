@@ -1,8 +1,6 @@
-const TableRow = ({ rowData: item, data, updateData }) => {
-  function handleEdit() {
-    console.log(item);
-  }
+import ModalEditItemButton from "./ModalEditItemButton";
 
+const TableRow = ({ rowData: item, data, updateData }) => {
   function handleDelete() {
     updateData(data.filter((product) => product.id !== item.id));
   }
@@ -24,15 +22,10 @@ const TableRow = ({ rowData: item, data, updateData }) => {
       <td className="text-lg text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {item.status}
       </td>
-      <td>
+      <td className="px-3 py-4 flex">
+        <ModalEditItemButton item={item} data={data} updateData={updateData} />
         <button
-          className="bg-green-500 px-3 py-2 mr-5 rounded-md"
-          onClick={handleEdit}
-        >
-          Edit
-        </button>
-        <button
-          className="bg-red-400 px-3 py-2 rounded-md"
+          className="bg-red-400 active:bg-red-500 active:text-white shadow hover:shadow-lg px-3 py-2 rounded-md"
           onClick={handleDelete}
         >
           Delete

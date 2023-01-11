@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ModalAddItem from "./components/ModalAddItem";
+import ModalAddItemButton from "./components/ModalAddItemButton";
 import TableProduct from "./components/TableProduct";
 
 const App = () => {
@@ -24,9 +24,9 @@ const App = () => {
     return <div> WAIT DATA IS LOADING .. </div>;
   } else {
     return (
-      <div className="container mx-auto font-rubik">
+      <div className="container mx-auto mb-5 font-rubik">
         <div className="text-2xl my-3"> Task : CRUD Operation </div>
-        <ModalAddItem />
+        <ModalAddItemButton data={data} updateData={setData} />
         <TableProduct data={data} updateData={setData} />
       </div>
     );
