@@ -8,7 +8,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filteredData, setFilteredData] = useState(null);
 
-  console.log(filteredData);
   useEffect(() => {
     let baseUrl = "https://product-fhqo.onrender.com/products";
 
@@ -17,6 +16,8 @@ const App = () => {
       .then((data) => {
         setData(data.products);
         setIsLoading(false);
+
+        console.log("useEffect:- API read successfully. ✅");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -27,10 +28,17 @@ const App = () => {
     return <div> WAIT DATA IS LOADING .. </div>;
   } else {
     return (
-      <div className="container mx-auto mb-5 font-rubik">
+      <div className="md:container mx-auto mb-5 font-rubik">
         <div className="text-2xl my-3"> Task : CRUD Operation </div>
-        <ModalAddItemButton data={data} updateData={setData} />
-        <Filter data={data} setFilteredData={setFilteredData} />
+
+        <div className="flex flex-col md:flex-row justify-between mb-3">
+          <div>
+            <ModalAddItemButton data={data} updateData={setData} />
+          </div>
+          <div>
+            <Filter data={data} setFilteredData={setFilteredData} />
+          </div>
+        </div>
         <TableProduct data={dataToShow} updateData={setData} />
       </div>
     );
