@@ -1,6 +1,12 @@
 # Table CRUD operation with API
 
-### currently active at : https://63bfab5d00d407176f9f69d5--crud-truemark.netlify.app/.
+### NOTES
+
+- Search box filters using both product_name and category_name.
+
+### currently active at :
+
+https://63bfab5d00d407176f9f69d5--crud-truemark.netlify.app/.
 
 ### Resources
 
