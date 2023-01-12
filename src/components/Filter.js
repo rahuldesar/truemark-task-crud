@@ -29,7 +29,7 @@ const Filter = ({ data, setFilteredData }) => {
 
   return (
     <input
-      className="bg-gray-200 border-gray-200 border-2 focus:outline-none focus:bg-white focus:border-emerald-400 rounded px-6 py-2"
+      className="bg-gray-200 border-gray-200 w-52 text-center md:text-left border-2 focus:outline-none focus:bg-white focus:border-emerald-400 rounded px-6 py-2"
       placeholder="Search"
       onChange={handleFilterChange}
     />

@@ -28,10 +28,13 @@ const App = () => {
     return <div> WAIT DATA IS LOADING .. </div>;
   } else {
     return (
-      <div className="md:container mx-auto mb-5 font-rubik">
-        <div className="text-2xl my-3"> Task : CRUD Operation </div>
+      <div className="sm:container mx-auto mb-5 font-rubik">
+        <div className="text-2xl pb-2 my-3 text-center border-b-2">
+          {" "}
+          Task : CRUD Operation{" "}
+        </div>
 
-        <div className="flex flex-col md:flex-row justify-between mb-3">
+        <div className="flex gap-3 px-5 xl:px-2 items-center flex-col md:flex-row justify-between mb-3">
           <div>
             <ModalAddItemButton data={data} updateData={setData} />
           </div>
@@ -39,7 +42,11 @@ const App = () => {
             <Filter data={data} setFilteredData={setFilteredData} />
           </div>
         </div>
-        <TableProduct data={dataToShow} updateData={setData} />
+        <TableProduct
+          data={data}
+          dataToShow={dataToShow}
+          updateData={setData}
+        />
       </div>
     );
   }

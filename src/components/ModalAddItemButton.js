@@ -47,7 +47,7 @@ const ModalAddItemButton = ({ data, updateData }) => {
   return (
     <div>
       <button
-        className="bg-emerald-500 active:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg mr-1 mb-1"
+        className="bg-emerald-500 active:text-white active:bg-emerald-600 w-52 text-center md:text-left font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg"
         type="button"
         onClick={() => setShowModal(true)}
       >
