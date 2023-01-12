@@ -25,7 +25,7 @@ const App = () => {
   const dataToShow = filteredData === null ? data : filteredData;
 
   if (isLoading) {
-    return <div> WAIT DATA IS LOADING .. </div>;
+    return <div> Fetching Data ... </div>;
   } else {
     return (
       <div className="sm:container mx-auto mb-5 font-rubik">
