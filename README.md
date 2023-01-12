@@ -2,6 +2,8 @@
 
 ### NOTES
 
+- This app doesn't update data in server. This app only uses one 'Get' call and all other operations are done on that returned data.
+
 - Search box filters using both product_name and category_name.
 
 ### currently active at :
