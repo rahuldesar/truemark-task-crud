@@ -1,10 +1,10 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-const TableProduct = ({ data, updateData }) => {
+const TableProduct = ({ data, updateData, dataToShow }) => {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full ">
+      <table className="min-w-full px-10">
         <thead className="border border-slate-500">
           <tr>
             <th
@@ -41,7 +41,7 @@ const TableProduct = ({ data, updateData }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {dataToShow.map((item) => (
             <TableRow
               key={item.id}
               rowData={item}
