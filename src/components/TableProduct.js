@@ -9,31 +9,31 @@ const TableProduct = ({ data, updateData }) => {
           <tr>
             <th
               scope="col"
-              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-md font-medium text-gray-900 px-6 py-4 text-left"
             >
               Name
             </th>
             <th
               scope="col"
-              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-md font-medium text-gray-900 px-6 py-4 text-left"
             >
               Category
             </th>
             <th
               scope="col"
-              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-md font-medium text-gray-900 px-6 py-4 text-left"
             >
               Description
             </th>
             <th
               scope="col"
-              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-md font-medium text-gray-900 px-6 py-4 text-left"
             >
               Created At
             </th>
             <th
               scope="col"
-              className="text-lg font-medium text-gray-900 px-6 py-4 text-left"
+              className="text-md font-medium text-gray-900 px-6 py-4 text-left"
             >
               Status
             </th>
