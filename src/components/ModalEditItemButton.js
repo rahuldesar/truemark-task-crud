@@ -1,4 +1,5 @@
 import { useState } from "react";
+import productService from "../services/product";
 
 const ModalEditItemButton = ({ data, updateData, item }) => {
   const [showModal, setShowModal] = useState(false);
@@ -7,9 +8,48 @@ const ModalEditItemButton = ({ data, updateData, item }) => {
   const [itemDescription, setItemDescription] = useState(item.description);
   const [itemStatus, setItemStatus] = useState(item.status);
 
-  function handleEdit(e) {
-    e.preventDefault();
+  // function handleEdit(e) {
+  //   e.preventDefault();
 
+  // let newData = data.map((singleData) => {
+  //   if (singleData.id === item.id) {
+  //     return {
+  //       ...singleData,
+  //       product_name: itemName,
+  //       category_name: itemCategory,
+  //       description: itemDescription,
+  //       status: itemStatus,
+  //     };
+  //   } else {
+  //     return singleData;
+  //   }
+  // });
+
+  // updateData(newData);
+  //   setShowModal(false);
+  // }
+
+  let updateProduct = (id) => {
+    const productToUpdate = data.find((product) => product.id === item.id);
+    console.log(productToUpdate);
+    const newProductData = {
+      product_name: itemName,
+      category_name: itemCategory,
+      description: itemDescription,
+      status: itemStatus,
+    };
+    console.log(newProductData);
+    // * Update on Server
+    productService
+      .update(productToUpdate.id, newProductData)
+      .then((response) => {
+        console.log(response.data);
+        console.log(`${response.data.product_name} added`);
+        newProductData.id = response.data.id;
+        newProductData.created_at = response.data.created_at;
+      });
+
+    // * Update Data locally . (to reduce amount of api calls + faster).
     let newData = data.map((singleData) => {
       if (singleData.id === item.id) {
         return {
@@ -25,8 +65,13 @@ const ModalEditItemButton = ({ data, updateData, item }) => {
     });
 
     updateData(newData);
+
     setShowModal(false);
-  }
+  };
+
+  // let deleteData = (id) => {
+  //   updateData(data.filter((product) => product.id !== item.id));
+  // };
 
   function resetProduct() {
     setItemName(item.product_name);
@@ -55,7 +100,7 @@ const ModalEditItemButton = ({ data, updateData, item }) => {
                   </h3>
                 </div>
 
-                <form onSubmit={handleEdit}>
+                <form onSubmit={updateProduct}>
                   <div className="md:flex md:items-center my-3 mx-3">
                     <div className="md:w-1/3">
                       <label>Name</label>
@@ -70,20 +115,7 @@ const ModalEditItemButton = ({ data, updateData, item }) => {
                       />
                     </div>
                   </div>
-                  <div className="md:flex md:items-center my-3 mx-3">
-                    <div className="md:w-1/3">
-                      <label>Category</label>
-                    </div>
-                    <div className="md:w-2/3">
-                      <input
-                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-emerald-300"
-                        type="text"
-                        value={itemCategory}
-                        placeholder="Category of Product"
-                        onChange={(e) => setItemCategory(e.target.value)}
-                      />
-                    </div>
-                  </div>
+
                   <div className="md:flex md:items-center my-3 mx-3">
                     <div className="md:w-1/3">
                       <label>Description</label>
@@ -96,6 +128,32 @@ const ModalEditItemButton = ({ data, updateData, item }) => {
                         value={itemDescription}
                         onChange={(e) => setItemDescription(e.target.value)}
                       />
+                    </div>
+                  </div>
+                  <div className="md:flex md:items-center my-3 mx-3">
+                    <div className="md:w-1/3">
+                      <label>Category</label>
+                    </div>
+                    <div className="md:w-2/3">
+                      {/* <input
+                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-emerald-300"
+                        type="text"
+                        value={itemCategory}
+                        placeholder="Category of Product"
+                        onChange={(e) => setItemCategory(e.target.value)}
+                      /> */}
+                      <select
+                        className="bg-gray-200 border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 disabled:text-gray-400 leading-tight focus:outline-none focus:bg-white focus:border-emerald-300"
+                        value={itemCategory}
+                        onChange={(e) => setItemCategory(e.target.value)}
+                      >
+                        <option className="text-gray-400" value="" hidden>
+                          Product Category
+                        </option>
+                        <option value="electronic">Electronic</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="dairy">Dairy</option>
+                      </select>
                     </div>
                   </div>
                   <div className="md:flex md:items-center my-3 mx-3">
