@@ -1,9 +1,18 @@
 import ModalEditItemButton from "./ModalEditItemButton";
+import productService from "../services/product";
 
 const TableRow = ({ rowData: item, data, updateData }) => {
-  function handleDelete() {
+  // ? LOCAL CRUD
+  // function handleDelete() {
+  //   updateData(data.filter((product) => product.id !== item.id));
+  // }
+
+  let deleteData = (id) => {
+    const dataToDelete = data.find((product) => product.id === item.id);
+    console.log(dataToDelete);
+    productService.remove(dataToDelete.id);
     updateData(data.filter((product) => product.id !== item.id));
-  }
+  };
 
   return (
     <tr className="border border-slate-500">
@@ -26,7 +35,7 @@ const TableRow = ({ rowData: item, data, updateData }) => {
         <ModalEditItemButton item={item} data={data} updateData={updateData} />
         <button
           className="bg-red-400 active:bg-red-500 active:text-white shadow hover:shadow-lg px-3 py-2 rounded-md"
-          onClick={handleDelete}
+          onClick={() => deleteData(item.id)}
         >
           Delete
         </button>
