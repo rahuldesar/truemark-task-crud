@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Filter from "./components/Filter";
 import ModalAddItemButton from "./components/ModalAddItemButton";
 import TableProduct from "./components/TableProduct";
+import productService from "./services/product";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -9,16 +10,12 @@ const App = () => {
   const [filteredData, setFilteredData] = useState(null);
 
   useEffect(() => {
-    let baseUrl = "https://product-fhqo.onrender.com/products";
+    productService.getAll().then((response) => {
+      setData(response.data.products);
+      setIsLoading(false);
 
-    fetch(baseUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.products);
-        setIsLoading(false);
-
-        console.log("useEffect:- API read successfully. ✅");
-      });
+      console.log("useEffect:- API read successfully. ✅");
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
